@@ -45,9 +45,8 @@ export default function Overlay() {
           style={{ opacity: opacity2, y: y2 }}
           className="absolute left-8 md:left-24 top-1/2 -translate-y-1/2 max-w-lg"
         >
-          <h2 className="text-3xl md:text-6xl font-semibold leading-tight text-white mb-4">
             Building modern <br />
-            <span className="text-gray-400">digital products</span>
+            <span className="text-gray-400">digital experiences.</span>
           </h2>
           <div className="h-1 w-24 bg-white/20 mt-8 rounded-full" />
         </motion.div>
@@ -58,8 +57,8 @@ export default function Overlay() {
           className="absolute right-8 md:right-24 top-1/2 -translate-y-1/2 max-w-lg text-right"
         >
           <h2 className="text-3xl md:text-6xl font-semibold leading-tight text-white mb-4">
-            with code, creativity, <br />
-            <span className="text-gray-400"> and engineering.</span>
+            with code, creativity <br />
+            <span className="text-gray-400">and engineering.</span>
           </h2>
           <div className="h-1 w-24 bg-white/20 mt-8 rounded-full ml-auto" />
         </motion.div>

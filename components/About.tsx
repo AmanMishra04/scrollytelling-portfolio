@@ -1,7 +1,7 @@
 export default function About() {
   return (
-    <section className="relative w-full bg-[#121212] py-32 px-8 md:px-24 border-t border-white/5">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 md:gap-32">
+    <section className="relative w-full bg-[#121212] py-6 md:py-10 px-8 md:px-24 border-t border-white/5">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-6 md:gap-16">
         <div className="w-full md:w-1/3">
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
             About <span className="text-gray-500">Me.</span>

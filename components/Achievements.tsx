@@ -35,13 +35,13 @@ export default function Achievements() {
   ];
 
   return (
-    <section className="relative w-full bg-[#121212] py-24 px-8 md:px-24 border-t border-white/5">
+    <section className="relative w-full bg-[#121212] py-6 md:py-10 px-8 md:px-24 border-t border-white/5">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-16">
+        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 md:mb-10">
           Achievements & <span className="text-gray-500">More.</span>
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           
           {/* Left Column: Awards / Hackathons */}
           <div className="space-y-8">
@@ -56,7 +56,7 @@ export default function Achievements() {
           </div>
 
           {/* Right Column: Certificates & Workshops */}
-          <div className="space-y-16">
+          <div className="space-y-8 md:space-y-12">
             
             {/* Certificates */}
             <div>

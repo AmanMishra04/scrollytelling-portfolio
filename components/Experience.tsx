@@ -37,13 +37,13 @@ export default function Experience() {
   ];
 
   return (
-    <section className="relative w-full bg-[#121212] py-24 px-8 md:px-24">
+    <section className="relative w-full bg-[#121212] py-6 md:py-10 px-8 md:px-24">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-6xl font-bold text-white mb-16">
+        <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 md:mb-10">
           Work <span className="text-gray-500">Experience.</span>
         </h2>
 
-        <div className="space-y-12">
+        <div className="space-y-6 md:space-y-8">
           {experiences.map((exp, idx) => (
             <div key={idx} className="relative pl-8 md:pl-0">
               <div className="md:grid md:grid-cols-4 md:gap-8 items-start">

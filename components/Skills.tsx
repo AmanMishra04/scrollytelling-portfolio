@@ -13,8 +13,8 @@ export default function Skills() {
   ];
 
   return (
-    <section className="relative w-full bg-[#121212] py-24 px-8 md:px-24">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16">
+    <section className="relative w-full bg-[#121212] py-6 md:py-10 px-8 md:px-24">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-6 md:gap-12">
         
         {/* Title Area */}
         <div className="w-full md:w-1/3">
@@ -25,7 +25,7 @@ export default function Skills() {
         </div>
 
         {/* Skills Content Area */}
-        <div className="w-full md:w-2/3 space-y-16">
+        <div className="w-full md:w-2/3 space-y-8 md:space-y-12">
           
           {/* Technical Categories */}
           {Object.entries(technicalSkills).map(([category, items]) => (
