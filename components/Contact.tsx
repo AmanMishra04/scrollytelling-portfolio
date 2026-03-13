@@ -47,7 +47,7 @@ export default function Contact() {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-6xl font-bold text-white mb-6"
           >
-            Let's <span className="text-gray-500">Connect.</span>
+            Let&apos;s <span className="text-gray-500">Connect.</span>
           </motion.h2>
           <motion.div
             initial={{ width: 0 }}

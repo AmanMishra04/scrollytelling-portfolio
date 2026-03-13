@@ -21,6 +21,33 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
   // Map scroll progress to a frame index (0 to 119)
   const frameIndex = useTransform(scrollYProgress, [0, 1], [0, TOTAL_FRAMES - 1]);
 
+  // Stable render function
+  const renderFrame = useCallback((index: number) => {
+    if (!canvasRef.current || !imagesRef.current[index]) return;
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const img = imagesRef.current[index]!;
+
+    const canvasWidth = canvas.width;
+    const canvasHeight = canvas.height;
+    // ensure size is set
+    if (canvasWidth === 0 || canvasHeight === 0) return;
+
+    const imgWidth = img.width;
+    const imgHeight = img.height;
+
+    const ratio = Math.max(canvasWidth / imgWidth, canvasHeight / imgHeight);
+    const newWidth = imgWidth * ratio;
+    const newHeight = imgHeight * ratio;
+    const offsetX = (canvasWidth - newWidth) / 2;
+    const offsetY = (canvasHeight - newHeight) / 2;
+
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    ctx.drawImage(img, offsetX, offsetY, newWidth, newHeight);
+  }, []);
+
   // Preload images
   useEffect(() => {
     let isCancelled = false;
@@ -61,34 +88,7 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
     return () => {
       isCancelled = true;
     };
-  }, []);
-
-  // Stable render function
-  const renderFrame = useCallback((index: number) => {
-    if (!canvasRef.current || !imagesRef.current[index]) return;
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const img = imagesRef.current[index]!;
-
-    const canvasWidth = canvas.width;
-    const canvasHeight = canvas.height;
-    // ensure size is set
-    if (canvasWidth === 0 || canvasHeight === 0) return;
-
-    const imgWidth = img.width;
-    const imgHeight = img.height;
-
-    const ratio = Math.max(canvasWidth / imgWidth, canvasHeight / imgHeight);
-    const newWidth = imgWidth * ratio;
-    const newHeight = imgHeight * ratio;
-    const offsetX = (canvasWidth - newWidth) / 2;
-    const offsetY = (canvasHeight - newHeight) / 2;
-
-    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-    ctx.drawImage(img, offsetX, offsetY, newWidth, newHeight);
-  }, []);
+  }, [renderFrame]);
 
   // Use Framer Motion event to trigger render only on scroll change
   useMotionValueEvent(frameIndex, "change", (latest) => {
