@@ -36,7 +36,7 @@ export default function Overlay() {
             Aman Mishra
           </h1>
           <p className="text-xl md:text-3xl text-gray-300 font-light">
-            Software Engineer.
+            -Software Engineer-
           </p>
         </motion.div>
 
@@ -46,7 +46,7 @@ export default function Overlay() {
           className="absolute left-8 md:left-24 top-1/2 -translate-y-1/2 max-w-lg"
         >
           <h2 className="text-3xl md:text-6xl font-semibold leading-tight text-white mb-4">
-            I build digital <br />
+            Building modern digital products <br />
             <span className="text-gray-400">experiences.</span>
           </h2>
           <div className="h-1 w-24 bg-white/20 mt-8 rounded-full" />
@@ -58,8 +58,8 @@ export default function Overlay() {
           className="absolute right-8 md:right-24 top-1/2 -translate-y-1/2 max-w-lg text-right"
         >
           <h2 className="text-3xl md:text-6xl font-semibold leading-tight text-white mb-4">
-            Bridging Tech <br />
-            <span className="text-gray-400">and engineering.</span>
+            with code, creativity, <br />
+            <span className="text-gray-400"> idea and engineering.</span>
           </h2>
           <div className="h-1 w-24 bg-white/20 mt-8 rounded-full ml-auto" />
         </motion.div>
