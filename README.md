@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Aman Mishra's Portfolio
 
-## Getting Started
+<div align="center">
+  <img src="https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js" alt="Next.js" />
+  <img src="https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react" alt="React" />
+  <img src="https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-3-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Framer_Motion-12-black?style=for-the-badge&logo=framer" alt="Framer Motion" />
+</div>
 
-First, run the development server:
+<br />
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+A high-end, visually stunning personal portfolio built with **Next.js**, featuring advanced **Scrollytelling** and **HTML5 Canvas image sequence animations**. Designed to be a highly interactive, premium digital experience.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **🎬 Canvas Sequence Animations:** Apple-style smooth scroll-bound image sequence animations using HTML5 `<canvas>`.
+- **⚡ Highly Optimized Concurrent Loading:** Uses parallel asynchronous fetching (`Promise.all`) for 120+ high-res frames with a sleek progress bar.
+- **✨ Smooth Scrolling:** Seamless, fluid scrolling powered by Lenis for an immersive experience.
+- **🎭 Parallax & Framer Motion:** Beautiful scroll-triggered text reveals, parallex effects, and dynamic component rendering.
+- **💅 Modern Aesthetics:** A dark-mode first design with glassmorphism, precise typography, and vibrant visual accents.
+- **📱 Fully Responsive:** Carefully crafted to perform beautifully across all device sizes.
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Framework:** [Next.js (App Router)](https://nextjs.org/)
+- **Core Library:** [React 18](https://reactjs.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Scroll Hijacking (Smooth):** [Lenis](https://github.com/studio-freight/lenis)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Getting Started
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To run this project locally, follow these steps:
 
-## Deploy on Vercel
+### Prerequisites
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+You need [Node.js](https://nodejs.org/) installed on your machine.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/AmanMishra04/Aman-Mishra-portfolio.git
+   cd Aman-Mishra-portfolio
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
+
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in Browser:**
+   Navigate to [http://localhost:3000](http://localhost:3000) to view the portfolio.
+
+## 📂 Project Structure Highlights
+
+- `components/ScrollyCanvas.tsx`: The core logic for the scroll-bound image sequence animation mapping scroll progress to 120 image frames.
+- `components/Overlay.tsx`: Interactive, scroll-aware text component overlaid on top of the canvas.
+- `components/SmoothScroll.tsx`: Wrapper for smooth scrolling functionality using Lenis.
+- `public/portfolio/`: Directory containing all the sequenced frames for the canvas animation.
+
+## 👨‍💻 Author
+
+**Aman Mishra**
+- GitHub: [@AmanMishra04](https://github.com/AmanMishra04)
+
+---
+<div align="center">
+  <i>Built with ❤️ by Aman Mishra</i>
+</div>
