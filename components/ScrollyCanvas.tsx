@@ -10,6 +10,7 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [images, setImages] = useState<HTMLImageElement[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
 
   // Framer Motion scroll progress 0 to 1 over the 500vh container
   const { scrollYProgress } = useScroll({
@@ -22,51 +23,61 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
 
   // Preload images
   useEffect(() => {
+    let isCancelled = false;
+
     const preloadImages = async () => {
       const loadedImages: HTMLImageElement[] = [];
       let loadedCount = 0;
+      const loadPromises = [];
 
       for (let i = 0; i < TOTAL_FRAMES; i++) {
         const img = new Image();
         // File format: frame_000_delay-0.066s.png
         // Need to pad start with zeros to match standard formatting: e.g. 000, 001, ..., 119
         const indexStr = i.toString().padStart(3, "0");
-        const src = `/sequence/frame_${indexStr}_delay-0.066s.png`;
-        
+        const src = `/portfolio/frame_${indexStr}_delay-0.066s.png`;
         img.src = src;
-        await new Promise((resolve) => {
+        
+        const p = new Promise((resolve) => {
           img.onload = () => {
             loadedCount++;
-            if (loadedCount === TOTAL_FRAMES) {
-              setIsLoaded(true);
+            if (!isCancelled) {
+              setLoadingProgress(Math.round((loadedCount / TOTAL_FRAMES) * 100));
+            }
+            // initial render to prevent blank screen
+            if (i === 0 && canvasRef.current) {
+              renderFrame(0, [img]); 
             }
             resolve(null);
           };
           img.onerror = () => {
             console.error(`Failed to load ${src}`);
-            // Resolve anyway to not break the loop
+            loadedCount++;
+            if (!isCancelled) {
+              setLoadingProgress(Math.round((loadedCount / TOTAL_FRAMES) * 100));
+            }
+            // Resolve anyway to not break the sequence
             resolve(null);
           };
         });
+
+        loadPromises.push(p);
         loadedImages.push(img);
-        
-        // Render first frame as soon as it loads
-        if (i === 0 && canvasRef.current) {
-          const ctx = canvasRef.current.getContext("2d");
-          if (ctx) {
-            img.onload = () => {
-                loadedCount++;
-                if (loadedCount === TOTAL_FRAMES) setIsLoaded(true);
-                // initial render to prevent blank screen
-                renderFrame(0, [img]); 
-            };
-          }
-        }
       }
-      setImages(loadedImages);
+
+      await Promise.all(loadPromises);
+
+      if (!isCancelled) {
+        setImages(loadedImages);
+        setIsLoaded(true);
+      }
     };
 
     preloadImages();
+
+    return () => {
+      isCancelled = true;
+    };
   }, []);
 
   // Stable render function
@@ -131,8 +142,15 @@ export default function ScrollyCanvas({ children }: { children?: React.ReactNode
         
         {/* Loading overlay if images are still preloading */}
         {!isLoaded && (
-          <div className="absolute inset-0 flex items-center justify-center bg-[#121212] z-50 text-white font-sans">
-            Loading Sequence...
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#121212] z-50 text-white font-sans">
+            <div className="mb-4 text-xl">Loading Sequence...</div>
+            <div className="w-64 h-2 bg-gray-800 rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-white transition-all duration-300 ease-out" 
+                style={{ width: `${loadingProgress}%` }}
+              />
+            </div>
+            <div className="mt-2 text-sm text-gray-400">{loadingProgress}%</div>
           </div>
         )}
       </div>
